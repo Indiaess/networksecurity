@@ -3,7 +3,8 @@ pandas
 numpy
 matplotlib
 scikit-learn
-
+pymongo[srv]==3.11
+pymongo
 
 
 ##-e .
