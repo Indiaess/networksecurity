@@ -49,7 +49,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ecr
         id: build-image
         env:
-          ECR_REGISTORY : ${{ steps.login-ecr.output.registry }}
+          ECR_REGISTRY : ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME}}
           IMAGE_TAG: latest
 
@@ -57,7 +57,7 @@ jobs:
          # Build a docker container and
          # push it to ECR so that it con
          # be deployed to ECS 
-          docker build -t $ECR_REGISTORY/$ECR_REPOSITORY:$IMAGE_TAB .
-          docker push $ECR_REGISTORY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTORY/$ECR_REPOSITORY:$IMAGE_TAG"
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         
