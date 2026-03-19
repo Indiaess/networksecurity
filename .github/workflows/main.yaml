@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Build, tag, and push image to Amazon ecr
-        id: bui;ld-image
+        id: build-image
         env:
           ECR_REGISTORY : ${{ steps.login-ecr.output.registry }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME}}
