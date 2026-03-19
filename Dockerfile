@@ -1,22 +1,22 @@
-FROM python:3.10-slim-buster
+FROM python:3.10-slim
 
 WORKDIR /app
 
-# Install system dependencies (if needed)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only requirements first (for caching)
+# Copy requirements first (better caching)
 COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install AWS CLI (latest version)
+# Install AWS CLI (optional)
 RUN pip install --no-cache-dir awscli
 
-# Copy rest of the application
+# Copy rest of app
 COPY . .
 
 # Run app
